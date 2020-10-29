@@ -13,18 +13,19 @@ $(document).ready( function() {
   var numRandom = []; // numeri random creati dal pc
   var quantiNum = 5; //quantita di numeri creati
   var tempoNum = 5 * 1000; //tempo dopo il quale inizia il gioco
+  var numRicordati = []; //numeri ricordati
   //POPOLAMENTO ARRAY DEI NUM DEL PC
   var campoGioco = popolamento(quantiNum , numRandom);
   alert( campoGioco );
   setTimeout( function() {
     numUtente = inserisciNum(quantiNum , numUtente);
-    console.log(numUtente);
+    for (var a = 0; a < numUtente.length; a++) {
+      if ( numRandom.includes(numUtente[a]) ) {
+        numRicordati.push(numUtente[a]);
+      }
+    }
+    alert('Ti sei ricordato i numeri :' + numRicordati);
   } , tempoNum);
-
-
-
-
-
 }); //FINE DOCUMENT READY
 
 // UTILITY
