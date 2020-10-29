@@ -33,6 +33,8 @@ $(document).ready( function() {
       }
       if (numRicordati == 0) {
         alert('Non ti sei ricordato nemmeno un numero :\(');
+      } else if (numRicordati.length === campoGioco.length) {
+        alert('Complimenti! Hai ricordato tutti i numeri!');
       } else {
         alert('Ti sei ricordato i numeri : ' + numRicordati);
       }
