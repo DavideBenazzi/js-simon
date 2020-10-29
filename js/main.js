@@ -16,8 +16,10 @@ $(document).ready( function() {
   //POPOLAMENTO ARRAY DEI NUM DEL PC
   var campoGioco = popolamento(quantiNum , numRandom);
   alert( campoGioco );
-  setTimeout( inserisciNum , tempoNum);
-  console.log(numUtente)
+  setTimeout( function() {
+    numUtente = inserisciNum(quantiNum , numUtente);
+    console.log(numUtente);
+  } , tempoNum);
 
 
 
