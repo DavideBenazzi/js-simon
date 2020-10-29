@@ -31,7 +31,11 @@ $(document).ready( function() {
           numRicordati.push(numUtente[a]);
         }
       }
-      alert('Ti sei ricordato i numeri : ' + numRicordati);
+      if (numRicordati == 0) {
+        alert('Non ti sei ricordato nemmeno un numero :\(');
+      } else {
+        alert('Ti sei ricordato i numeri : ' + numRicordati);
+      }
     } , tempoNum);
   });
 }); //FINE DOCUMENT READY
@@ -58,11 +62,11 @@ function popolamento(quantiNum , numRandom) {
 function inserisciNum(quantiNum , numUtente) {
  for (var c = 0; c < quantiNum;) {
    var sceltaNum = parseInt( prompt('Inserisci un numero da 1 a 100 : ') );
-   if (! numUtente.includes(sceltaNum) ) {
+   if ((! numUtente.includes(sceltaNum)) && (! isNaN(sceltaNum))) {
      numUtente.push(sceltaNum);
      c++;
    } else {
-     sceltaNum = parseInt( prompt('Hai già scelto questo numero , scegline un\'altro : ') );
+     sceltaNum = parseInt( prompt('Numero non valido o già scelto , scegline un\'altro : ') );
    }
  }
  return numUtente;
