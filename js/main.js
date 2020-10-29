@@ -22,7 +22,7 @@ $(document).ready( function() {
       i++;
     }
   }
-  console.log(numRandom);
+  alert(numRandom);
 
 
 
