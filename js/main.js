@@ -38,6 +38,12 @@ $(document).ready( function() {
       } else {
         alert('Ti sei ricordato i numeri : ' + numRicordati);
       }
+      //RESET CONTATORI
+      quantiNum = 0;
+      tempoNum = 0;
+      numUtente = [];
+      numRandom = [];
+      numRicordati = [];
     } , tempoNum);
   });
 }); //FINE DOCUMENT READY
