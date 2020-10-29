@@ -4,28 +4,32 @@ Dopo 30 secondi l'utente deve inserire, un prompt alla volta, i numeri che ha vi
 Una volta inseriti i 5 numeri, il software dice quanti e quali numeri sono stati ricordati.
 */
 
-
-
-
 $(document).ready( function() {
+  // REFERENZE
+  var start = $('.start');
+
   // VARIABILI
   var numUtente = []; //numeri dati dall'utente
   var numRandom = []; // numeri random creati dal pc
   var quantiNum = 5; //quantita di numeri creati
-  var tempoNum = 5 * 1000; //tempo dopo il quale inizia il gioco
+  var tempoNum = 30 * 1000; //tempo dopo il quale inizia il gioco
   var numRicordati = []; //numeri ricordati
+
   //POPOLAMENTO ARRAY DEI NUM DEL PC
   var campoGioco = popolamento(quantiNum , numRandom);
-  alert( campoGioco );
-  setTimeout( function() {
-    numUtente = inserisciNum(quantiNum , numUtente);
-    for (var a = 0; a < numUtente.length; a++) {
-      if ( numRandom.includes(numUtente[a]) ) {
-        numRicordati.push(numUtente[a]);
+  start.click( function() {
+    alert( 'Ecco i numeri da ricordare : ' + campoGioco );
+    //LOOP DI GIOCO
+    setTimeout( function() {
+      numUtente = inserisciNum(quantiNum , numUtente);
+      for (var a = 0; a < numUtente.length; a++) {
+        if ( numRandom.includes(numUtente[a]) ) {
+          numRicordati.push(numUtente[a]);
+        }
       }
-    }
-    alert('Ti sei ricordato i numeri :' + numRicordati);
-  } , tempoNum);
+      alert('Ti sei ricordato i numeri : ' + numRicordati);
+    } , tempoNum);
+  });
 }); //FINE DOCUMENT READY
 
 // UTILITY
