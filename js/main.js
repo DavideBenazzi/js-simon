@@ -6,6 +6,8 @@ Una volta inseriti i 5 numeri, il software dice quanti e quali numeri sono stati
 
 $(document).ready( function() {
   // REFERENZE
+  var seleziona = $('#seleziona'); //selezione della quantita dei numeri con cui giocare
+  var secondi = $('#secondi'); //selezione dei secondi di attesa da parte dell'utente
   var start = $('.start');
 
   // VARIABILI
@@ -16,8 +18,10 @@ $(document).ready( function() {
   var numRicordati = []; //numeri ricordati
 
   //POPOLAMENTO ARRAY DEI NUM DEL PC
-  var campoGioco = popolamento(quantiNum , numRandom);
   start.click( function() {
+    quantiNum =  seleziona.val();
+    tempoNum = secondi.val() * 1000;
+    var campoGioco = popolamento(quantiNum , numRandom);
     alert( 'Ecco i numeri da ricordare : ' + campoGioco );
     //LOOP DI GIOCO
     setTimeout( function() {

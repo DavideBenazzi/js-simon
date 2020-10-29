@@ -35,6 +35,7 @@ h3 {
   cursor: pointer;
   font-size: 30px;
   font-weight: 700;
+  margin-top: 30px;
 }
 
 .start:hover {
