@@ -8,22 +8,16 @@ Una volta inseriti i 5 numeri, il software dice quanti e quali numeri sono stati
 
 
 $(document).ready( function() {
-  console.log('js ok!!!');
   // VARIABILI
   var numUtente = []; //numeri dati dall'utente
   var numRandom = []; // numeri random creati dal pc
   var quantiNum = 5; //quantita di numeri creati
-  var tempoNum = 30 * 1000; //tempo dopo il quale inizia il gioco
+  var tempoNum = 5 * 1000; //tempo dopo il quale inizia il gioco
   //POPOLAMENTO ARRAY DEI NUM DEL PC
-  for (var i = 0; i < quantiNum;) {
-    var numPc = random(1 , 100);
-    if (! numRandom.includes(numPc) ) {
-      numRandom.push(numPc);
-      i++;
-    }
-  }
-  alert(numRandom);
-
+  var campoGioco = popolamento(quantiNum , numRandom);
+  alert( campoGioco );
+  setTimeout( inserisciNum , tempoNum);
+  console.log(numUtente)
 
 
 
@@ -32,10 +26,40 @@ $(document).ready( function() {
 }); //FINE DOCUMENT READY
 
 // UTILITY
+/**FUNZIONE POPOLA ARRAY RANDOM
+ *@@ param1 {quantiNum} quanti numeri nell array
+ *@@ param2 {numRandom} array da popolare
+ */
+function popolamento(quantiNum , numRandom) {
+  for (var i = 0; i < quantiNum;) {
+    var numPc = random(1 , 100);
+    if (! numRandom.includes(numPc) ) {
+      numRandom.push(numPc);
+      i++;
+    }
+  }
+  return numRandom;
+};
+/**FUNZIONE INSERISCI I NUMERI PER GIOCARE
+*@@ param1 {quantiNum} quanti numeri nell array
+*@@ param2 {numUtente} array da popolare
+ */
+function inserisciNum(quantiNum , numUtente) {
+ for (var c = 0; c < quantiNum;) {
+   var sceltaNum = parseInt( prompt('Inserisci un numero da 1 a 100 : ') );
+   if (! numUtente.includes(sceltaNum) ) {
+     numUtente.push(sceltaNum);
+     c++;
+   } else {
+     sceltaNum = parseInt( prompt('Hai già scelto questo numero , scegline un\'altro : ') );
+   }
+ }
+ return numUtente;
+}
 /**FUNZIONE NUMERI RANDOM
  *@@ param1 {min} range minimo
  *@@ param2 {max} range massimo
  */
 function random(min , max) {
   return Math.floor( Math.random() * (max - min + 1) ) + min;
-}
+};
